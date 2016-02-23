@@ -1,0 +1,32 @@
+Error 1:
+
+
+When changing from GTBuzz.java to GTbuzz.java, the class name became different, hence the class name and the file name are different. Giving an error.
+
+Error 2:
+
+
+Adding the division by 0 line after the print statement causes an arithmetic exception, but only after the line is printed because it happens after the fact. Division by zero is undefined and hence will not be possible.
+
+Error 3:
+
+Println is not a pre-defined class, it’s a method under System.out. This will cause a symbol error.
+
+Error 4:
+
+
+Since the double quote was removed, the second double quote begins a quote that doesn’t close, and hence causes closing errors.
+
+Error 5:
+
+
+No error, the command line prints out the replaced quote.
+
+Error 6:
+
+The missing semicolon gives an exception because there was a semicolon expected so that each individual command could be executed. If not there, it cannot compile.
+
+Error 7:
+
+
+Removing the brace prevents the completion of the class. It needs this to terminate properly.
