@@ -1,5 +1,20 @@
 import java.io.IOException;
+
+/**
+ * Collaboration Statement: I worked on this homework independently using only
+ * course materials and the Java documentation.
+ * @author Sujeeth Jinesh
+ * @version 1
+ */
 public class Photoslop {
+
+    private static Pic picture;
+
+    /**
+    * Main method.
+    * @param args initial arguments
+    */
+
     public static void main(String... args) throws IOException {
         if (args.length < 3) {
             printUsage();
@@ -9,25 +24,31 @@ public class Photoslop {
             //your code here
             //hint the base pic for use with the image processor is in args[1]
 
+            ImageProcessor image = new ImageProcessor(args[1]);
+
             if (args[0].equals("-g")) {
-                //greyscale mode
-                //your code here
-                //remember to call save to args[3]
+                picture = image.greyscale();
+                picture.save(args[2]);
+
             } else if (args[0].equals("-i")) {
-                //invert mode
+
+                picture = image.invert();
+                picture.save(args[2]);
+
             } else if (args[0].equals("-c")) {
                 //use this as your chroma key to match the greenscreen
                 //in the lego guy image
                 Pixel chromaKey = new Pixel(26, 185, 19, 1);
 
-                //Your code here to apply the chroma key transformation
-                //It's up to you what you want the rgb deltas (thresholds) to be
-                //I used something like 20, 40, 20
+                picture = image.chroma(chromaKey, 40, 40, 40);
 
-                //Hint: to do this part, consider making another ImageProcessor
-                //Your code here to apply the background (args[2])
+                picture.save(args[3]);
 
-                //Finally, save to args[3]
+                Pic bg = new Pic(args[2]);
+
+                picture = image.background(bg);
+
+                picture.save(args[3]);
             } else {
                 printUsage();
             }
@@ -46,6 +67,6 @@ public class Photoslop {
         System.out.println("");
         System.out.println("Greenscreen mode: ");
         System.out.println("java Photoslop -c imageFile backgroundFile"
-            + " outputFileName");
+                + " outputFileName");
     }
 }
