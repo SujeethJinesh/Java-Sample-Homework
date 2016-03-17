@@ -130,7 +130,6 @@ public class Westeros {
                             coldResistance, wargAbility));
                 } else if (userInput == 3) {
                     System.out.println("Please enter their name.");
-                    input.nextLine();
                     String name = input.nextLine();
                     System.out.println();
                     System.out.println("Please enter their words.");
